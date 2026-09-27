@@ -1,0 +1,40 @@
+/* وارد کردن فونت از پکیج نصب شده */
+@import "vazirmatn/Vazirmatn-font-face.css";
+
+@tailwind utilities;
+
+/* تنظیم فونت به عنوان فونت پیش‌فرض کل پروژه */
+@layer base {
+  html {
+    font-family: "Vazirmatn", sans-serif;
+  }
+}
+
+@import "tailwindcss";
+@theme {
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 2560px;
+}
+
+@import "vazirmatn/Vazirmatn-font-face.css";
+
+@theme {
+  --font-vazir: Vazirmatn, sans-serif;
+}
+
+body {
+  font-family: Vazirmatn, sans-serif;
+}
+
+
+/* Wheel picker */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.wheel-scroll {
+  overscroll-behavior: contain;
+}

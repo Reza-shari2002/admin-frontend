@@ -17,7 +17,7 @@ const menuItems = [
   },
   {
     label: "رمزهای موقت",
-    path: "/temporary-passwords",
+    path: "/otplogs",
     icon: KeyRound,
   },
   {
@@ -32,7 +32,7 @@ const menuItems = [
   },
   {
     label: "تراکنش‌ها",
-    path: "/transactions",
+    path: "/transaction",
     icon: ReceiptText,
   },
   {

@@ -5,8 +5,10 @@ import {
 } from "react-router-dom";
 
 import Tickets from "../modules/tickets/pages/Tickets";
-
-import Contact_us from "../modules/Contact-us/pages/Contact_us";
+import Transactions from "../modules/transactions/pages/Transactions";
+import OtpLogs from "../modules/otp-code/pages/OtpLogs";
+import Users from "../modules/users/pages/Users";
+import AdminSeats from "../modules/seats/pages/AdminSeats";
 import Login from "../modules/auth/pages/Login";
 import Verify_otp from "../modules/auth/pages/Verify_otp.";
 import Formcontext from "../context/Formcontext";
@@ -18,14 +20,14 @@ function App() {
       path: "/",
       element: <Navigate to="/dashboard" replace />, // ریدایرکت از روت اصلی به /home
     },
-    {path:"/tickets" , element: <Tickets></Tickets>}
+    { path: "/tickets", element: <Tickets></Tickets> },
     ,
-
+    { path: "/transaction", element: <Transactions></Transactions> },
+    {path:"/seats" , element:<AdminSeats></AdminSeats>},
     { path: "/login", element: <Login></Login> },
     { path: "/verify", element: <Verify_otp></Verify_otp> },
-
-    { path: "/Contact-us", element: <Contact_us></Contact_us> },
-
+    { path: "/otplogs", element: <OtpLogs></OtpLogs> },
+    { path: "/users", element: <Users></Users> },
     { path: "*", element: <NotFound /> },
   ]);
   return (

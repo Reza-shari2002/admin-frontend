@@ -69,7 +69,7 @@ export default function useVerifyOtp() {
         localStorage.setItem("accesstoken", result.data.accesstoken);
       }
       showToast("ورود با موفقیت انجام شد", "success");
-      navigate("/home");
+      navigate("/users");
     } else {
       showToast(result.error || "کد وارد شده صحیح نمی‌باشد", "error");
       reset({ otp: "" });

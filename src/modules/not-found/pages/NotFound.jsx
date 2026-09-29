@@ -60,7 +60,7 @@ function NotFound() {
         </p>
 
         <Link
-          to="/home"
+          to="/users"
           style={{
             display: "inline-block",
             background: "#2563eb",

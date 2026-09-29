@@ -6,7 +6,7 @@ import {
   Ticket,
   ReceiptText,
   Users,
-  LayoutDashboard,
+  LayoutDashboard, Settings
 } from "lucide-react";
 
 const menuItems = [
@@ -40,6 +40,11 @@ const menuItems = [
     path: "/users",
     icon: Users,
   },
+   {
+    label: "تنظیمات",
+    path: "/Setting",
+    icon: Settings,
+  }
 ];
 
 function Layout({ children, customTitle }) {

@@ -13,6 +13,7 @@ import Login from "../modules/auth/pages/Login";
 import Verify_otp from "../modules/auth/pages/Verify_otp.";
 import Formcontext from "../context/Formcontext";
 import NotFound from "../modules/not-found/pages/NotFound";
+import Setting from "../modules/setting/pages/Setting";
 
 function App() {
   const router = createBrowserRouter([
@@ -27,6 +28,7 @@ function App() {
     { path: "/login", element: <Login></Login> },
     { path: "/verify", element: <Verify_otp></Verify_otp> },
     { path: "/otplogs", element: <OtpLogs></OtpLogs> },
+  {path:"/Setting" , element:<Setting></Setting>},
     { path: "/users", element: <Users></Users> },
     { path: "*", element: <NotFound /> },
   ]);

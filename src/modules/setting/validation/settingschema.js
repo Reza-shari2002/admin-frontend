@@ -24,3 +24,40 @@ export const addseatsSchema = yup
   );
 
 
+  const activeStatusValidation = yup
+  .mixed()
+  .nullable()
+  .transform((val) => (val === "" || val === undefined ? null : Number(val)))
+  .test("is-zero-or-one", "وضعیت فقط می‌تواند ۰ (غیرفعال) یا ۱ (فعال) باشد", (val) => {
+    if (val === null || val === undefined) return true; // اختیاری بودن
+    return val === 0 || val === 1;
+  });
+
+const messageValidation = yup
+  .string()
+  .trim()
+  .max(255, "پیام نمی‌تواند بیشتر از ۲۵۵ کاراکتر باشد")
+  .nullable()
+  .transform((val) => (val === "" ? null : val));
+
+export const generalSettingSchema = yup
+  .object({
+    is_vip_active: activeStatusValidation,
+    is_regular_active: activeStatusValidation,
+    is_gamer_active: activeStatusValidation,
+    vip_message: messageValidation,
+    regular_message: messageValidation,
+    gamer_message: messageValidation,
+  })
+  .test(
+    "at-least-one-field",
+    "حداقل باید یکی از فیلدها برای به‌روزرسانی ارسال شود",
+    (values) => {
+      if (!values) return false;
+      return Object.values(values).some(
+        (val) => val !== null && val !== undefined && val !== ""
+      );
+    }
+  );
+
+

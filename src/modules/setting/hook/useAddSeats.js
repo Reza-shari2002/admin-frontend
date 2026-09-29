@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {SeatService} from "../services/SetttingService";
-import {addseatsSchema} from "../validation/settingschema";
+import { SeatService } from "../services/SettingService.js";
+import { addseatsSchema } from "../validation/settingschema";
 import { context } from "../../../context/Formcontext.jsx";
 
 const defaultValues = {
@@ -29,7 +29,6 @@ export default function useAddSeats(onSuccess) {
     formState: { errors },
   } = form;
 
-  
   const onSubmit = async (values) => {
     setLoading(true);
     try {
@@ -44,7 +43,7 @@ export default function useAddSeats(onSuccess) {
       if (response?.success) {
         showToast?.(
           response.message || "صندلی‌ها با موفقیت ایجاد شدند.",
-          "success"
+          "success",
         );
         reset(defaultValues);
         if (typeof onSuccess === "function") {

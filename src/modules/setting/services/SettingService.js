@@ -7,3 +7,8 @@ export async function SeatService(payload) {
     return response.data;
 
 }
+
+export async function updateGeneralSettings(payload) {
+  const response = await axiosInstance.patch("/Setting", payload);
+  return response.data;
+}

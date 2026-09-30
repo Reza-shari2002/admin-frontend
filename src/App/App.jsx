@@ -19,7 +19,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Navigate to="/dashboard" replace />, // ریدایرکت از روت اصلی به /home
+      element: <Navigate to="/users" replace />, // ریدایرکت از روت اصلی به /home
     },
     { path: "/tickets", element: <Tickets></Tickets> },
     ,

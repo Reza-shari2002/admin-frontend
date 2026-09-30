@@ -31,7 +31,9 @@ function App() {
   {path:"/Setting" , element:<Setting></Setting>},
     { path: "/users", element: <Users></Users> },
     { path: "*", element: <NotFound /> },
-  ]);
+  ] ,     {
+      basename: "/admin",
+    });
   return (
     <>
       <Formcontext>

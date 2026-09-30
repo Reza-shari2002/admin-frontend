@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000/api", // یا "/api" در صورت وجود پروکسی Vite/Nginx
+  baseURL: "/api", // یا "/api" در صورت وجود پروکسی Vite/Nginx
 });
 
 axiosInstance.interceptors.request.use((config) => {

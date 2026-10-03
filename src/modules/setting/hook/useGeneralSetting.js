@@ -12,6 +12,16 @@ const defaultValues = {
   vip_message: "",
   regular_message: "",
   gamer_message: "",
+  // مقادیر جدید
+  vip_location: "",
+  regular_location: "",
+  gamer_location: "",
+  vip_price: "",
+  regular_price: "",
+  gamer_price: "",
+  vip_event_date: "",
+  regular_event_date: "",
+  gamer_event_date: "",
 };
 
 export default function useGeneralSetting(onSuccess) {
@@ -34,7 +44,6 @@ export default function useGeneralSetting(onSuccess) {
   const onSubmit = async (values) => {
     setLoading(true);
     try {
-      // فیلتر کردن مقادیر خالی تا فقط فیلدهای مقداردهی‌شده در PATCH ارسال شوند
       const payload = {};
 
       if (values.is_vip_active !== "" && values.is_vip_active !== null) {
@@ -60,9 +69,56 @@ export default function useGeneralSetting(onSuccess) {
         payload.gamer_message = values.gamer_message.trim();
       }
 
+      // مکان‌ها
+      if (values.vip_location !== "" && values.vip_location !== null) {
+        payload.vip_location = values.vip_location.trim();
+      }
+      if (values.regular_location !== "" && values.regular_location !== null) {
+        payload.regular_location = values.regular_location.trim();
+      }
+      if (values.gamer_location !== "" && values.gamer_location !== null) {
+        payload.gamer_location = values.gamer_location.trim();
+      }
+
+      // قیمت‌ها (باید عدد صحیح باشند)
+      if (
+        values.vip_price !== "" &&
+        values.vip_price !== null &&
+        values.vip_price !== undefined
+      ) {
+        payload.vip_price = Number(values.vip_price);
+      }
+      if (
+        values.regular_price !== "" &&
+        values.regular_price !== null &&
+        values.regular_price !== undefined
+      ) {
+        payload.regular_price = Number(values.regular_price);
+      }
+      if (
+        values.gamer_price !== "" &&
+        values.gamer_price !== null &&
+        values.gamer_price !== undefined
+      ) {
+        payload.gamer_price = Number(values.gamer_price);
+      }
+
+      // تاریخ‌ها
+      if (values.vip_event_date !== "" && values.vip_event_date !== null) {
+        payload.vip_event_date = values.vip_event_date.trim();
+      }
+      if (
+        values.regular_event_date !== "" &&
+        values.regular_event_date !== null
+      ) {
+        payload.regular_event_date = values.regular_event_date.trim();
+      }
+      if (values.gamer_event_date !== "" && values.gamer_event_date !== null) {
+        payload.gamer_event_date = values.gamer_event_date.trim();
+      }
+
       const response = await updateGeneralSettings(payload);
 
-      // بر اساس ریسپانس موفقیت که فرستادید: response.data وجود دارد
       if (response && response.data) {
         showToast?.(
           response.message || "تنظیمات با موفقیت بروزرسانی شد",

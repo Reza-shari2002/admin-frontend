@@ -35,12 +35,22 @@ export const useTicket = () => {
       const data = res?.data || res;
 
       // دریافت لیست بلیت‌ها
-      const ticketList = data?.tickets || data?.rows || (Array.isArray(data) ? data : []);
+      const ticketList =
+        data?.tickets || data?.rows || (Array.isArray(data) ? data : []);
       setTickets(ticketList);
 
       // پوشش تمام حالات ساختار صفحه‌بندی بک‌اند
-      const total = data?.totalCount ?? data?.total ?? data?.count ?? data?.pagination?.total ?? ticketList.length;
-      const pages = data?.totalPages ?? data?.pagination?.totalPages ?? Math.ceil(total / limit) ?? 1;
+      const total =
+        data?.totalCount ??
+        data?.total ??
+        data?.count ??
+        data?.pagination?.total ??
+        ticketList.length;
+      const pages =
+        data?.totalPages ??
+        data?.pagination?.totalPages ??
+        Math.ceil(total / limit) ??
+        1;
 
       setTotalCount(Number(total) || 0);
       setTotalPages(Number(pages) || 1);
@@ -102,19 +112,22 @@ export const useTicket = () => {
     setActionLoadingId(ticketId);
     try {
       await TicketService.useTicket(ticketId);
-      showToast?.("ورود با موفقیت ثبت شد و بلیت باطل/استفاده گردید.", "success");
+      showToast?.(
+        "ورود با موفقیت ثبت شد و بلیت باطل/استفاده گردید.",
+        "success",
+      );
 
       setTickets((prev) =>
         prev.map((t) =>
-          t.ticket_id === ticketId ? { ...t, is_used: true } : t
-        )
+          t.ticket_id === ticketId ? { ...t, is_used: true } : t,
+        ),
       );
 
       if (verifyResult?.tickets) {
         setVerifyResult((prev) => ({
           ...prev,
           tickets: prev.tickets.map((t) =>
-            t.ticket_id === ticketId ? { ...t, is_used: true } : t
+            t.ticket_id === ticketId ? { ...t, is_used: true } : t,
           ),
         }));
       }
@@ -123,6 +136,9 @@ export const useTicket = () => {
         err?.response?.data?.message ||
         "این بلیت قبلاً استفاده شده است و امکان ورود مجدد وجود ندارد.";
       showToast?.(message, "error");
+      setTimeout(() => {
+        window.location.href = "/admin/login";
+      }, 3000);
     } finally {
       setActionLoadingId(null);
     }
@@ -130,7 +146,9 @@ export const useTicket = () => {
 
   // ۴. لغو / ابطال بلیت
   const handleCancelTicket = async (ticketId) => {
-    if (!window.confirm("آیا از ابطال بلیت و آزادسازی صندلی‌ها اطمینان دارید؟")) {
+    if (
+      !window.confirm("آیا از ابطال بلیت و آزادسازی صندلی‌ها اطمینان دارید؟")
+    ) {
       return;
     }
 

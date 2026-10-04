@@ -137,6 +137,9 @@ export default function useGeneralSetting(onSuccess) {
         error?.message ||
         "خطایی در ارسال اطلاعات رخ داد";
       showToast?.(message, "error");
+      setTimeout(() => {
+        window.location.href = "/admin/login";
+      }, 3000);
     } finally {
       setLoading(false);
     }

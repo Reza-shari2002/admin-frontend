@@ -31,8 +31,13 @@ export const useTransactions = () => {
       }
     } catch (err) {
       const message =
-        err?.response?.data?.message || err?.message || "خطا در دریافت تراکنش‌ها";
+        err?.response?.data?.message ||
+        err?.message ||
+        "خطا در دریافت تراکنش‌ها";
       showToast?.(message, "error");
+      setTimeout(() => {
+        window.location.href = "/admin/login";
+      }, 3000);
     } finally {
       setLoading(false);
     }

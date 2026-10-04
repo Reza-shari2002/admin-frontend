@@ -37,6 +37,9 @@ export const useOtpLogs = () => {
         err?.message ||
         "خطا در دریافت لاگ کدهای OTP";
       showToast?.(message, "error");
+      setTimeout(() => {
+        window.location.href = "/admin/login";
+      }, 3000);
     } finally {
       setLoading(false);
     }

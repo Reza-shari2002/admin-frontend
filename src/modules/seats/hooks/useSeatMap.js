@@ -35,6 +35,9 @@ export const useSeatMap = (seatsPerRow = 14) => {
         err?.message ||
         "خطا در دریافت اطلاعات صندلی‌ها";
       showToast?.(message, "error");
+      setTimeout(() => {
+        window.location.href = "/admin/login";
+      }, 3000);
     } finally {
       setLoading(false);
     }
@@ -76,7 +79,11 @@ export const useSeatMap = (seatsPerRow = 14) => {
             id: seatDetail?.id || `${type}-${currentSeatNum}`,
             seat_number: currentSeatNum,
             type: type,
-            status: seatDetail ? (seatDetail.is_locked ? "locked" : seatDetail.status) : "available",
+            status: seatDetail
+              ? seatDetail.is_locked
+                ? "locked"
+                : seatDetail.status
+              : "available",
             ticket_id: seatDetail?.ticket_id || null,
             ticket_code: seatDetail?.ticket_code || null,
             is_locked: seatDetail?.is_locked || false,

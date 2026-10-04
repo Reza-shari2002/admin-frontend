@@ -18,7 +18,7 @@ export const useUsers = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearch(search);
-      setPage(1); 
+      setPage(1);
     }, 450);
 
     return () => clearTimeout(timer);
@@ -47,6 +47,9 @@ export const useUsers = () => {
         err?.message ||
         "خطا در برقراری ارتباط با سرور";
       showToast?.(message, "error");
+      setTimeout(() => {
+        window.location.href = "/admin/login";
+      }, 3000);
     } finally {
       setLoading(false);
     }

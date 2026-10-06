@@ -6,7 +6,7 @@ import {
   Ticket,
   ReceiptText,
   Users,
-  LayoutDashboard, Settings
+  LayoutDashboard, Settings , Undo
 } from "lucide-react";
 
 const menuItems = [
@@ -44,6 +44,10 @@ const menuItems = [
     label: "تنظیمات",
     path: "/Setting",
     icon: Settings,
+  },{
+    label:"درخواست های استرداد بلیط",
+    path:"/refund" ,
+    icon: Undo,
   }
 ];
 

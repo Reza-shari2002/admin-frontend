@@ -44,7 +44,7 @@ export const useRefundRequests = () => {
     } finally {
       setLoading(false);
     }
-  }, [page, limit, status, showToast]);
+  }, [page, limit, status]);
 
   useEffect(() => {
     fetchRefunds();

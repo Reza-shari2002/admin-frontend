@@ -43,7 +43,7 @@ export const useOtpLogs = () => {
     } finally {
       setLoading(false);
     }
-  }, [page, limit, showToast]);
+  }, [page, limit]);
 
   useEffect(() => {
     fetchOtps();

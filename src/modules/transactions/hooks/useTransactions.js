@@ -41,7 +41,7 @@ export const useTransactions = () => {
     } finally {
       setLoading(false);
     }
-  }, [page, limit, showToast]);
+  }, [page, limit]);
 
   useEffect(() => {
     fetchTransactions();

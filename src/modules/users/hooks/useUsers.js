@@ -53,7 +53,7 @@ export const useUsers = () => {
     } finally {
       setLoading(false);
     }
-  }, [page, limit, debouncedSearch, showToast]);
+  }, [page, limit, debouncedSearch]);
 
   useEffect(() => {
     fetchUsers();

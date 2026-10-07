@@ -61,7 +61,7 @@ export const useTicket = () => {
     } finally {
       setLoading(false);
     }
-  }, [page, limit, selectedType, showToast]);
+  }, [page, limit, selectedType]);
 
   // فراخوانی در زمان تغییر page, limit یا selectedType
   useEffect(() => {

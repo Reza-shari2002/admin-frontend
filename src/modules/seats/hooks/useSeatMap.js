@@ -41,7 +41,7 @@ export const useSeatMap = (seatsPerRow = 14) => {
     } finally {
       setLoading(false);
     }
-  }, [showToast]);
+  }, []);
 
   useEffect(() => {
     fetchData();
